@@ -45,8 +45,8 @@ def login():
             return render_template('login.html', message='Your password is incorrect! Please enter correct password.')
         if email == 'dumbledore@gmail.com':
             return redirect(url_for('admin', email=data[0][1]))
-        if data[0][-2] == None:
-            return redirect(url_for('post-game', email=data[0][1]))
+        if data[0][-2] != None:
+            return redirect(url_for('post_game', email=data[0][1]))
         #return render_template('board.html', email=data[0][1], image=data[0][-1], house_assigned=data[0][-2], questions=questions)
         return redirect(url_for('game', email=data[0][1]))
     
