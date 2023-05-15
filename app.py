@@ -66,7 +66,7 @@ def game(email):
                     'https://i.ytimg.com/vi/clqPPWDUe_U/maxresdefault.jpg',
                     'https://d.newsweek.com/en/full/1033479/mcdhapo-ec030.jpg', '',
                     'https://s.hdnux.com/photos/47/53/14/10400528/6/1200x0.jpg']
-    if session.get('questions') == None: 
+    if session.get('questions') == []: 
         questions = list(questions)
         for i in range(len(questions)):
             questions[i] = list(questions[i])
