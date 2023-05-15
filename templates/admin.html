@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .site-header { 
+          border-bottom: 1px solid #ccc;
+  padding: .5em 1em;
+  background-color: white;
+}
+
+.site-header::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.site-identity {
+  float: left;
+}
+
+.site-identity h1 {
+  font-size: 1.5em;
+  margin: .7em 0 .3em 0;
+  display: inline-block;
+}
+
+.site-identity img {
+  max-width: 55px;
+  float: left;
+  margin: 0 10px 0 0;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-identity">
+          <a href="#"><img src={{image}} alt="Site Name" /></a>
+          <h1>Welcome <a href="/profile">{{email}}</a></h1>
+        </div>  
+      </header>
+      <table style="border: solid 1px black;">
+        <tr>
+          <th>Email Id</th>
+          <th>Q1 score</th>
+          <th>Q2 score</th>
+          <th>Q3 score</th>
+          <th>Q4 score</th>
+          <th>Q5 score</th>
+          <th>House</th>
+        </tr>
+        {% for u in user_progress %}
+            <tr>
+                <td>{{u[0]}}</td>
+                <td>{{u[1]}}</td>
+                <td>{{u[2]}}</td>
+                <td>{{u[3]}}</td>
+                <td>{{u[4]}}</td>
+                <td>{{u[5]}}</td>
+                <td>{{u[6]}}</td>
+            </tr>
+        {% endfor %}
+      </table>
+</body>
+</html>

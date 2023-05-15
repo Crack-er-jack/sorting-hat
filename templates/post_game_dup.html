@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.11.0/lottie.min.js"></script>
+</head>
+<style>
+    #potter-animation {
+  width: 100%;
+  height: 100%;
+      position: absolute;
+    bottom: 50px;
+}
+</style>
+<body>
+    <h1>You have been sorted into Bla!</h1>
+    <div id="potter-animation"></div>
+    <h2>Are you wondering why? Take a look at your scores:</h2>
+    <div style="display: flex;">
+        <div style="width: 40%;">
+            <img src="../static/result7.png" alt="">
+        </div>
+        <div style="width: 70%; margin-left: 100px;">
+            <img src="../static/Gryffindor.jpeg" alt="" width="570px" height="460px">
+        </div>
+    </div>
+    <button>click meeeee</button>
+    <script>
+        var spellAnimation = bodymovin.loadAnimation({
+      container: document.getElementById('potter-animation'),
+      renderer: 'svg',
+      loop: false,
+      autoplay: true,
+      path: 'https://raw.githubusercontent.com/abrahamrkj/facebook-spell/master/data.json'
+    })
+
+    
+    $(document).ready(function(){
+      spellAnimation.play();
+    })
+    </script>
+</body>
+
+</html>

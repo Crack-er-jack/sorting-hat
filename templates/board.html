@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  font-family: Helvetica;
+  margin: 0;
+  background-color: #eee;
+    background-image: url(https://cdn.pixabay.com/photo/2018/06/15/11/16/hogwarts-3476786_1280.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 0vw 2vw;
+    z-index: -1;
+    font-family: "Bellefair", serif;
+    letter-spacing: 1px;
+    /*min-width: 50%;*/
+    /*overflow-x: hidden;*/
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.site-header { 
+  border-bottom: 1px solid #ccc;
+  padding: .5em 1em;
+  background-color: white;
+}
+
+.site-header::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.site-identity {
+  float: left;
+}
+
+.site-identity h1 {
+  font-size: 1.5em;
+  margin: .7em 0 .3em 0;
+  display: inline-block;
+}
+
+.site-identity img {
+  max-width: 55px;
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+.puzzle1 {
+    font-size: 25px;
+    position: absolute;
+    margin-top: 540px;
+    margin-left: 175px;
+}
+.puzzle2 {
+    font-size: 25px;
+    position: absolute;
+    margin-top: 325px;
+    margin-left: 265px;
+}
+
+.puzzle3 {
+    font-size: 25px;
+    position: absolute;
+    margin-top: 215px;
+    margin-left: 365px;
+}
+
+.puzzle4 {
+    font-size: 25px;
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 550px;
+}
+
+.puzzle5 {
+    font-size: 25px;
+    position: absolute;
+    margin-top: 215px;
+    margin-left: 740px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.button {
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-identity">
+          <a href="#"><img src={{image}} alt="Site Name" /></a>
+          <h1>Welcome <a href="/profile">{{email}}</a></h1>
+        </div>  
+      </header>
+      <div>
+        <div class="puzzle1"><a href="#1"><b>1</b></a></div>
+        <div class="puzzle2"><a href="#2"><b>2</b></a></div>
+        <div class="puzzle3"><a href="#4"><b>3</b></a></div>
+        <div class="puzzle4"><a href="#5"><b>4</b></a></div>
+        <div class="puzzle5"><a href="#7"><b>5</b></a></div>
+        {%for i in range(0, len)%}
+            <div id={{i+1}} class="overlay">
+                <div class="popup">
+                    <h2>{{questions[i][-2]}}</h2>
+                    <img src="{{questions[i][-1]}}" width="400px" height="300px">
+                    <a class="close" href="#">&times;</a>
+                    {% if questions[i][-3] == 1 %}
+                    <div class="content">
+                        You already answered this question!
+                    </div>
+                    {% elif i not in [0, 3, 6] and questions[i-1][-3] == 0 %}
+                    <div class="content">
+                        Answer the previous questions first.
+                    </div>
+                    {% elif i in [3, 6] and questions[i-2][-3] == 0 %}
+                    <div class="content">
+                        Answer the previous questions first.
+                    </div>
+
+                    {% else %}
+                    <div class="content">
+                        {{questions[i][2]}}
+                        <form action="/q/{{i+1}}/{{email}}/{{questions[i][0]}}" method="POST">
+                            Your answer: <input type="text" name="answer{{i+1}}">
+                            <input type="submit" name="submit{{i+1}}" id="">
+                    </div>
+
+                    {% endif %}
+                    </form>
+            </div>
+        </div>
+        {%endfor%}
+        <img style="border: 6px solid black; margin-top: 15px; margin-left: 70px;" src="../static/game-board.png" alt="">
+        <section class="form-box" style="
+            float: right;
+            width: 35%;
+            padding: 20px;
+            padding-top: 4em;
+            /*border: 2px solid blue;*/
+            height: auto;
+          ">
+            <form id="survey-form" style="border: 2px solid #4b0082;
+            border-radius: 3px 40px;
+            padding: 20px;
+            background-color: rgba(248, 248, 255, 0.8);
+            background-image: linear-gradient(
+              rgba(248, 248, 255, 0.73),
+              rgba(245, 245, 245, 1)
+            );
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.5);">
+              <p style="
+                font-family: 'Playfair Display', serif;
+                text-align: left;
+                margin-top: 0;
+                padding-left: 0;
+                font-size: 1.2em;
+              ">Here are the rules:</p>
+              <li>Click on the numbers on the red circles to solve a puzzle</li>
+              <li>The puzzles must be answered <b>in order</b>!</li>
+              <li>For questions 2 and 4, you will have a second chance to attempt in case your answer is wrong.</li>
+              <li>You will be given an extra puzzle, if you solve it right you get a second chance but in case you solve it wrong you will not be able to complete the test.</li>
+              <li>Solve all the 5 puzzles and get your result!</li>
+              
+            </form>
+        </section>
+    </div>
+</body>
+</html>

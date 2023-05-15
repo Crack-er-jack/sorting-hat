@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #eee;
+    background-image: url(https://cdn.pixabay.com/photo/2018/06/15/11/16/hogwarts-3476786_1280.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 0vw 2vw;
+    z-index: -1;
+    font-family: "Bellefair", serif;
+    letter-spacing: 1px;
+    /*min-width: 50%;*/
+    /*overflow-x: hidden;*/
+  }
+  
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  .header-box {
+    float: left;
+    width: 50%;
+    /*border: 2px solid red;*/
+  }
+  
+  .header-box div {
+    text-align: center;
+    word-spacing: 0.5em;
+    background-color: rgba(75, 76, 116, 0.5);
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.3),
+      rgba(75, 76, 116, 0.3)
+    );
+    border-radius: 25px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    width: 20em;
+    height: auto;
+    position: fixed;
+    top: 10em;
+    left: 8vw;
+  }
+  
+  .form-box {
+    float: right;
+    width: 50%;
+    padding: 20px;
+    padding-top: 4em;
+    /*border: 2px solid blue;*/
+    height: auto;
+  }
+  
+  #title {
+    font-family: "Eczar", serif;
+    margin-bottom: 5px;
+    margin-top: 0;
+    line-height: 1.125em;
+  }
+  
+  form {
+    border: 2px solid #4b0082;
+    border-radius: 3px 40px;
+    padding: 20px;
+    background-color: rgba(248, 248, 255, 0.8);
+    background-image: linear-gradient(
+      rgba(248, 248, 255, 0.73),
+      rgba(245, 245, 245, 1)
+    );
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.5);
+  }
+  
+  #motto {
+    font-family: "Italianno", cursive;
+    margin-top: 0px;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  #description {
+    font-family: "Playfair Display", serif;
+    text-align: left;
+    margin-top: 0;
+    padding-left: 0;
+    font-size: 1.2em;
+  }
+  
+  .form-label {
+    width: 100%;
+    margin-top: 1em;
+    display: inline-block;
+  }
+  
+  .form-label:first-child {
+    margin-top: 0px;
+  }
+  
+  #date-label {
+    display: inline-block;
+    width: 35%;
+    margin: 30px 0px;
+  }
+  
+  #number-label {
+    display: inline-block;
+    width: 35%;
+    margin: 30px 0px 0px;
+  }
+  
+  fieldset {
+    width: 100%;
+    margin-top: 3em;
+    margin-bottom: 1em;
+    border-color: #4b0082;
+    border-radius: 4px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #4b0082;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+  
+  input[type="date"],
+  input[type="number"] {
+    width: 37%;
+    border: 1px solid #4b0082;
+    border-radius: 8px;
+    padding: 8px 2px;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  select:focus,
+  input[type="number"]:focus {
+    outline: none;
+    border-radius: 14px;
+    border-width: 2px;
+  }
+  
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+  
+  textarea:focus {
+    outline: none;
+    border-radius: 8px;
+    border-width: 2px;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    background-color: #483d8b;
+    color: white;
+    font-size: 1em;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    padding: 1.1em;
+    margin: 10px 0 2px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #191970;
+  }
+  
+  label {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  fieldset label:hover {
+    /*background-color: lightblue;*/
+    background-image: linear-gradient(
+      to right,
+      rgba(72, 61, 139, 0.3),
+      rgba(245, 245, 245, 0.1)
+    );
+    width: 80%;
+    border-radius: 5px;
+  }
+  
+  option {
+    background-color: #e6e6fa;
+  }
+  
+  @media only screen and (max-width: 900px) {
+    .header-box {
+      float: none;
+      width: 100%;
+      margin: 1.5em auto 0;
+      padding: 0 100px;
+    }
+    .header-box img {
+      width: 30%;
+    }
+    .header-box div {
+      position: absolute;
+      top: 18%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin-bottom: 0;
+    }
+  
+    #title {
+      font-size: 0.9em;
+    }
+    #motto {
+      font-size: 0.85em;
+      text-shadow: none;
+    }
+  
+    .form-box {
+      float: none;
+      display: block;
+      width: 90%;
+      margin: 0px;
+      padding: auto;
+    }
+  
+    form {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -4%);
+    }
+  }
+  
+    </style>
+</head>
+<body>
+    <header class="header-box">
+        <div>
+          <img id="logo" src="https://www.freepnglogos.com/uploads/hogwarts-logo-png/wizarding-hierarchy-blood-lines-harry-potter-hogwarts-logo-6.png" alt="Hogwarts logo" width="120">
+          <h1 id="title">Sorting Hat Quiz of Hogwarts</h1>
+          <p id="motto">Find out which house you belong to by going on a treasure hunt</p>
+        </div>
+      </header>
+      
+      <section class="form-box">
+        <form id="survey-form" action="/signup" method="POST">
+          <p id="description">Sign up for Sorting Hat Quiz</p>
+          <label class="form-label" id="name-label" for="email">Wizard Email</label>
+          <input type="email" id="name" name="email" placeholder="harry@hogwarts.com" required>
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="lname" name="password" placeholder="Password">
+          
+          <fieldset>
+            <legend>Choose your profile picture</legend>
+      
+            <label for="harry"><input type="radio" id="harry" name="pfp" value="https://i.pinimg.com/474x/82/62/7c/82627ce6b8c1acbb01c6d902a1aa54ec.jpg">Harry</label>
+            <label for="hermoine"><input type="radio" id="hermoine" name="pfp" value="https://pbs.twimg.com/media/Eusl2bvWQAUnZfO.jpg">Hermoine</label>
+            <label for="ron"><input type="radio" id="ron" name="pfp" value="https://img.wattpad.com/0123e5c1bf83f60de158473f04bf054523b0d4db/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f367a77644549384a4b5136436a673d3d2d3137342e313634616635333631316237663633613937393830303239343134392e6a7067?s=fit&w=720&h=720">Ron</label>
+            <label for="dobby"><input type="radio" id="dobby" name="pfp" value="https://pm1.narvii.com/6366/3f0ff63483ddc1f025b12597133a762f66a53726_00.jpg">Dobby</label>
+      
+          </fieldset><br><br>
+          <img src="https://i.pinimg.com/474x/82/62/7c/82627ce6b8c1acbb01c6d902a1aa54ec.jpg" alt="harry potter" height="200px" width="200px">
+          <img src="https://pbs.twimg.com/media/Eusl2bvWQAUnZfO.jpg" alt="hermoine granger" height="200px" width="200px">
+          <p>Harry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hermoine</p>
+          <img src="https://img.wattpad.com/0123e5c1bf83f60de158473f04bf054523b0d4db/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f367a77644549384a4b5136436a673d3d2d3137342e313634616635333631316237663633613937393830303239343134392e6a7067?s=fit&w=720&h=720" alt="ron weasely" height="200px" width="200px">
+          <img src="https://pm1.narvii.com/6366/3f0ff63483ddc1f025b12597133a762f66a53726_00.jpg" alt="dobby" height="200px" width="200px">
+          <p>Ron&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dobby</p>
+      
+          <input type="submit" id="submit" value="Signup">
+          <p>Already have an account? </p><a href="login">Login Here</a>
+        </form>
+        
+      </section>
+</body>
+</html>
