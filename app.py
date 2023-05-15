@@ -74,6 +74,7 @@ def game(email):
             questions[i].append(place_names[i])
             questions[i].append(place_images[i])
         session['questions'] = questions
+    print(session['questions'])
     return render_template('board.html', email=email, image=data[0][-1], house_assigned=data[0][-2], questions=session['questions'], len=len(questions))
 
 @app.route('/q/<qno>/<email>/<qid>', methods=['POST'])
